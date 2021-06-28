@@ -15,7 +15,30 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls import include, url  # noqa
+from rest_framework import routers
+from django.conf import settings
+from django.conf.urls.static import static
+from gift.viewset import GiftViewSet
+from category.viewset import CategoryViewSet
+from product.viewset import ProductViewSet , ImageProductViewSet
+from rest_framework_swagger.views import get_swagger_view
+from keywords.viewset import KeywordsViewSet
+
+router = routers.DefaultRouter()
+schema_view = get_swagger_view(title='gift_backend')
+
+router.register('gift', GiftViewSet)
+router.register('category', CategoryViewSet)
+router.register('product', ProductViewSet)
+router.register('ImageProduct', ImageProductViewSet)
+router.register('keywords', KeywordsViewSet)
+
 
 urlpatterns = [
+    path('swagger/', schema_view),
     path('admin/', admin.site.urls),
-]
+    path('api-auth/', include('rest_framework.urls')),
+    path('', include(router.urls)),
+
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

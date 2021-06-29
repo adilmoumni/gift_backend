@@ -20,6 +20,13 @@ class Product(models.Model):
         blank=True
     )
 
+    suplayer = models.ForeignKey('suplayer.suplayer',
+                                 verbose_name='suplayer',
+                                 related_name='suplayerProduct',
+                                 on_delete=models.CASCADE,
+                                 null=True,
+                                 blank=True)
+
     date = models.DateField(
         auto_now_add=True,
     )
@@ -41,9 +48,10 @@ class ImageProduct(models.Model):
 
     product = models.ForeignKey('product',
                                 verbose_name='image',
-                                on_delete=models.SET_NULL,
+                                related_name='imageProduct',
+                                on_delete=models.CASCADE,
                                 null=True,
                                 blank=True)
 
     def __str__(self):
-        return self.name
+        return self.image.path

@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'rest_framework_swagger',
     'django_filters',
     'keywords.apps.KeywordsConfig',
+    'suplayer.apps.SuplayerConfig',
 ]
 
 REST_FRAMEWORK = {

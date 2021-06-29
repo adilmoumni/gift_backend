@@ -13,6 +13,13 @@ class Keywords(models.Model):
         auto_now_add=True,
     )
 
+    category = models.ForeignKey('category.Category',
+                                 verbose_name='cat',
+                                 related_name='cat',
+                                 on_delete=models.CASCADE,
+                                 null=True,
+                                 blank=True)
+
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

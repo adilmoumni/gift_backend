@@ -25,6 +25,9 @@ from product.viewset import ProductViewSet , ImageProductViewSet
 from rest_framework_swagger.views import get_swagger_view
 from keywords.viewset import KeywordsViewSet
 from suplayer.viewset import SuplayerViewSet
+from customer.viewset import CustomerViewSet
+from order.viewset import OrderViewSet, OrderItemViewSet
+from favored.viewset import FavoredViewSet
 
 router = routers.DefaultRouter()
 schema_view = get_swagger_view(title='gift_backend')
@@ -35,6 +38,10 @@ router.register('product', ProductViewSet)
 router.register('ImageProduct', ImageProductViewSet)
 router.register('keywords', KeywordsViewSet)
 router.register('suplayer', SuplayerViewSet)
+router.register('customer', CustomerViewSet)
+router.register('order', OrderViewSet)
+router.register('orderItem', OrderItemViewSet)
+router.register('favored', FavoredViewSet)
 
 
 urlpatterns = [

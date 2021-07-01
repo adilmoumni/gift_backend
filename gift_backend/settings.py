@@ -43,6 +43,9 @@ INSTALLED_APPS = [
     'django_filters',
     'keywords.apps.KeywordsConfig',
     'suplayer.apps.SuplayerConfig',
+    'customer.apps.CustomerConfig',
+    'order.apps.OrderConfig',
+    'favored.apps.FavoredConfig',
 ]
 
 REST_FRAMEWORK = {
